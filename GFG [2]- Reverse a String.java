@@ -9,6 +9,7 @@ class Solution {
         
         StringBuilder storestr = new StringBuilder();
         
+        // isme check set karna hia jo check kkarega ki stack khali hua ki nhi 
         while(!stack.isEmpty()){
             storestr.append(stack.pop()); 
         }
