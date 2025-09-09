@@ -32,6 +32,18 @@ This repository contains a collection of Data Structures and Algorithms (DSA) pr
 - Recursion
 - Hashing
 
+---
+
+## 📊 Progress Overview  
+
+Here’s a progress chart showing solved problems by topic:  
+
+<!--chart-start-->
+![Progress Chart](https://quickchart.io/chart?c=%7Btype%3A'pie'%2Cdata%3A%7Blabels%3A%5B'Arrays%20%26%20Strings'%2C'Linked%20Lists'%2C'Stacks%20%26%20Queues'%2C'Trees%20%26%20BST'%2C'Graphs'%2C'DP'%2C'Hashing'%5D%2Cdatasets%3A%5B%7Bdata%3A%5B12%2C8%2C5%2C7%2C4%2C3%2C6%5D%2CbackgroundColor%3A%5B'%23FF6384'%2C'%2336A2EB'%2C'%23FFCE56'%2C'%234BC0C0'%2C'%239973FF'%2C'%23FF9F40'%2C'%2322C55E'%5D%2CborderColor%3A'white'%2CborderWidth%3A2%7D%5D%7D%2Coptions%3A%7Bplugins%3A%7Blegend%3A%7Bposition%3A'bottom'%2Clabels%3A%7Bcolor%3A'%23333'%2Cfont%3A%7Bsize%3A14%2Cweight%3A'bold'%7D%7D%7D%2Ctitle%3A%7Bdisplay%3Atrue%2Ctext%3A'DSA%20Topics%20Solved%20Progress'%2Cfont%3A%7Bsize%3A18%2Cweight%3A'bold'%7D%7D%7D%7D%7D)
+<!--chart-end-->
+
+---
+
 ## Contributing
 
 Contributions are welcome! If you have a solution to a new problem or an improvement to existing code, feel free to open a pull request.
