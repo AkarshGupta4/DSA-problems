@@ -39,36 +39,7 @@ This repository contains a collection of Data Structures and Algorithms (DSA) pr
 Here’s a progress chart showing solved problems by topic:  
 
 <!--chart-start-->
-![Progress Chart](https://quickchart.io/chart?c={
-  type:'pie',
-  data:{
-    labels:['Arrays & Strings','Linked Lists','Stacks & Queues','Trees & BST','Graphs','DP','Hashing'],
-    datasets:[{
-      data:[12,8,5,7,4,3,6],
-      backgroundColor:['#6D28D9','#7C3AED','#8B5CF6','#A78BFA','#C4B5FD','#DDD6FE','#E9D5FF'],
-      borderColor:'#1F1F1F',
-      borderWidth:2
-    }]
-  },
-  options:{
-    plugins:{
-      legend:{
-        position:'bottom',
-        labels:{
-          color:'#E5E7EB',
-          font:{size:14,weight:'bold'}
-        }
-      },
-      title:{
-        display:true,
-        text:'DSA Topics Solved Progress',
-        color:'#E5E7EB',
-        font:{size:18,weight:'bold'}
-      }
-    }
-  },
-  backgroundColor:'#1F1F1F'
-})
+![Progress Chart](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Arrays%20%26%20Strings%22%2C%22Linked%20Lists%22%2C%22Stacks%20%26%20Queues%22%2C%22Trees%20%26%20BST%22%2C%22Graphs%22%2C%22DP%22%2C%22Hashing%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B12%2C8%2C5%2C7%2C4%2C3%2C6%5D%2C%22backgroundColor%22%3A%5B%22%236D28D9%22%2C%22%237C3AED%22%2C%22%238B5CF6%22%2C%22%23A78BFA%22%2C%22%23C4B5FD%22%2C%22%23DDD6FE%22%2C%22E9D5FF%22%5D%2C%22borderColor%22%3A%22%231F1F1F%22%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22position%22%3A%22bottom%22%2C%22labels%22%3A%7B%22color%22%3A%22%23E5E7EB%22%2C%22font%22%3A%7B%22size%22%3A14%2C%22weight%22%3A%22bold%22%7D%7D%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22DSA%20Topics%20Solved%20Progress%22%2C%22color%22%3A%22%23E5E7EB%22%2C%22font%22%3A%7B%22size%22%3A18%2C%22weight%22%3A%22bold%22%7D%7D%7D%7D%2C%22backgroundColor%22%3A%22%231F1F1F%22%7D)
 <!--chart-end-->
 
 ---
