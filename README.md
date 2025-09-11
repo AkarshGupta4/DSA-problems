@@ -39,7 +39,36 @@ This repository contains a collection of Data Structures and Algorithms (DSA) pr
 Here’s a progress chart showing solved problems by topic:  
 
 <!--chart-start-->
-*(Chart will be automatically updated by GitHub Actions — do not edit manually.)*
+![Progress Chart](https://quickchart.io/chart?c={
+  type:'pie',
+  data:{
+    labels:['Arrays & Strings','Linked Lists','Stacks & Queues','Trees & BST','Graphs','DP','Hashing'],
+    datasets:[{
+      data:[12,8,5,7,4,3,6],
+      backgroundColor:['#6D28D9','#7C3AED','#8B5CF6','#A78BFA','#C4B5FD','#DDD6FE','#E9D5FF'],
+      borderColor:'#1F1F1F',
+      borderWidth:2
+    }]
+  },
+  options:{
+    plugins:{
+      legend:{
+        position:'bottom',
+        labels:{
+          color:'#E5E7EB',
+          font:{size:14,weight:'bold'}
+        }
+      },
+      title:{
+        display:true,
+        text:'DSA Topics Solved Progress',
+        color:'#E5E7EB',
+        font:{size:18,weight:'bold'}
+      }
+    }
+  },
+  backgroundColor:'#1F1F1F'
+})
 <!--chart-end-->
 
 ---
