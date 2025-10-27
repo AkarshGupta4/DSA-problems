@@ -50,6 +50,37 @@ pie title Problem Solving Progress
 | DP | 8 | ⭐⭐⭐⭐ |
 <!-- Add more topics -->
 
+### 📊 Topic Coverage Chart (counts — not percentages)
+
+Update the numbers below to reflect "Problems Solved" per topic. The ASCII chart always renders in plain Markdown; the Mermaid bar chart is optional and only works if your renderer supports Mermaid bar charts.
+
+Current counts:
+- Arrays: 15
+- Trees: 10
+- DP: 8
+
+ASCII bar chart (1 block = 1 problem)
+```
+Arrays | 15 ███████████████
+Trees  | 10 ██████████
+DP     | 8  ████████
+```
+
+Optional Mermaid bar chart (may not render on all platforms)
+```mermaid
+%%{init: {'theme': 'default'}}%%
+bar
+  title Problems per Topic (counts)
+  "Arrays": 15
+  "Trees": 10
+  "DP": 8
+```
+
+How to update:
+1. Edit the three numeric values above (Arrays / Trees / DP).
+2. Keep the ASCII bars visually consistent — add/remove '█' blocks to match the count (1 block = 1 problem).
+3. Also update the "Topic Coverage" table above so numbers stay in sync.
+
 ## 🗂️ Directory Structure
 ```
 DSA problems/
