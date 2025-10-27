@@ -65,15 +65,8 @@ Trees  | 10 ██████████
 DP     | 8  ████████
 ```
 
-Optional Mermaid bar chart (may not render on all platforms)
-```mermaid
-%%{init: {'theme': 'default'}}%%
-bar
-  title Problems per Topic (counts)
-  "Arrays": 15
-  "Trees": 10
-  "DP": 8
-```
+Rendered SVG chart (auto-generated)
+![Topic Growth Chart](./charts/topic_counts.svg)
 
 Note: This section is maintained automatically by .github/workflows/update-readme.yml using scripts/update_stats.js — do not edit manually.
 <!-- STATS_END -->

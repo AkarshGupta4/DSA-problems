@@ -3,8 +3,10 @@ const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
 const readmePath = path.join(repoRoot, 'README.md');
+const outDir = path.join(repoRoot, 'charts');
+const outSvg = path.join(outDir, 'topic_counts.svg');
 
-// Topics to track (add/remove names to match your folders)
+// Topics to track — adjust to match your folders
 const topics = ['Arrays', 'Trees', 'DP', 'LinkedList'];
 
 function countFilesInDir(dirPath) {
@@ -16,9 +18,60 @@ function countFilesInDir(dirPath) {
 }
 
 function makeAsciiBar(count) {
-	// limit bar length to 60 for very large counts (scale if needed)
-	const maxLen = Math.min(count, 60);
-	return '█'.repeat(maxLen);
+	return '█'.repeat(Math.min(count, 60));
+}
+
+function buildSvg(counts) {
+	// Simple horizontal bar SVG
+	const padding = 20;
+	const barHeight = 20;
+	const gap = 12;
+	const labelWidth = 120;
+	const maxBarWidth = 520;
+	const maxCount = Math.max(...Object.values(counts), 1);
+	const scale = maxBarWidth / maxCount;
+	const width = labelWidth + maxBarWidth + padding * 2;
+	const height = padding * 2 + Object.keys(counts).length * (barHeight + gap);
+
+	let svg = [];
+	svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`);
+	svg.push(`<style>
+		text { font-family: Arial, Helvetica, sans-serif; font-size:12px; fill:#222; }
+		.bar { fill:#2b90d9; }
+		.bg { fill:#e6eef8; }
+		</style>`);
+
+	let y = padding;
+	for (const [i, t] of Object.keys(counts).entries ? Object.keys(counts).entries() : Object.keys(counts).map((k,i)=>[i,k])) {
+		// compatibility for older node: ensure we have index and key
+	}
+	// Iterate predictable order
+	let idx = 0;
+	for (const t of Object.keys(counts)) {
+		const cnt = counts[t];
+		const barW = Math.round(cnt * scale);
+		const labelX = padding;
+		const barX = padding + labelWidth;
+		const yPos = padding + idx * (barHeight + gap);
+
+		// label
+		svg.push(`<text x="${labelX}" y="${yPos + barHeight - 6}">${escapeXml(t)}</text>`);
+		// background bar
+		svg.push(`<rect x="${barX}" y="${yPos}" width="${maxBarWidth}" height="${barHeight}" class="bg" rx="4" />`);
+		// value bar
+		svg.push(`<rect x="${barX}" y="${yPos}" width="${barW}" height="${barHeight}" class="bar" rx="4" />`);
+		// value text
+		svg.push(`<text x="${barX + barW + 8}" y="${yPos + barHeight - 6}">${cnt}</text>`);
+
+		idx++;
+	}
+
+	svg.push(`</svg>`);
+	return svg.join('\n');
+}
+
+function escapeXml(str) {
+	return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[s]));
 }
 
 function buildStatsBlock(counts) {
@@ -36,16 +89,9 @@ function buildStatsBlock(counts) {
 		const bar = makeAsciiBar(cnt);
 		lines.push(`${name} | ${cnt} ${bar}`);
 	}
-	lines.push('```\n');
-	lines.push('Optional Mermaid bar chart (may not render on all platforms)');
-	lines.push('```mermaid');
-	lines.push('%%{init: {\'theme\': \'default\'}}%%');
-	lines.push('bar');
-	lines.push('  title Problems per Topic (counts)');
-	for (const t of Object.keys(counts)) {
-		lines.push(`  "${t}": ${counts[t]}`);
-	}
 	lines.push('```');
+	lines.push('\nRendered SVG chart (auto-generated)');
+	lines.push('![Topic Growth Chart](./charts/topic_counts.svg)');
 	lines.push('\nNote: This section is maintained automatically by .github/workflows/update-readme.yml using scripts/update_stats.js — do not edit manually.');
 	return lines.join('\n');
 }
@@ -53,10 +99,9 @@ function buildStatsBlock(counts) {
 function updateReadme(counts) {
 	let content = fs.readFileSync(readmePath, 'utf8');
 
-	// Update the Topic Coverage table numeric column for each topic (multiline, case-insensitive)
+	// Update the Topic Coverage table numeric column for each topic
 	for (const t of Object.keys(counts)) {
-		// Replace the number after "| <Topic> | <number>"
-		const re = new RegExp(`(^\\|\\s*${t}\\s*\\|\\s*)\\d+`, 'mi');
+		const re = new RegExp(`(^\\|\\s*${escapeRegex(t)}\\s*\\|\\s*)\\d+`, 'mi');
 		content = content.replace(re, `$1${counts[t]}`);
 	}
 
@@ -79,12 +124,27 @@ function updateReadme(counts) {
 	fs.writeFileSync(readmePath, content, 'utf8');
 }
 
-// Main
-const counts = {};
-for (const topic of topics) {
-	const dir = path.join(repoRoot, topic);
-	counts[topic] = countFilesInDir(dir);
+function escapeRegex(s) {
+	return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-updateReadme(counts);
-console.log('Updated README stats:', counts);
+// Main
+(function main(){
+	const counts = {};
+	for (const topic of topics) {
+		const dir = path.join(repoRoot, topic);
+		counts[topic] = countFilesInDir(dir);
+	}
+
+	// ensure output dir
+	if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+
+	// write svg
+	const svg = buildSvg(counts);
+	fs.writeFileSync(outSvg, svg, 'utf8');
+
+	// update README
+	updateReadme(counts);
+
+	console.log('Updated README and SVG:', counts);
+})();
