@@ -50,6 +50,34 @@ pie title Problem Solving Progress
 | DP | 8 | ⭐⭐⭐⭐ |
 <!-- Add more topics -->
 
+<!-- STATS_START -->
+### 📊 Live Topic Growth Chart (auto-updated on push)
+
+Current counts (problems solved)
+- Arrays: 15
+- Trees: 10
+- DP: 8
+
+ASCII bar chart (1 block = 1 problem)
+```
+Arrays | 15 ███████████████
+Trees  | 10 ██████████
+DP     | 8  ████████
+```
+
+Optional Mermaid bar chart (may not render on all platforms)
+```mermaid
+%%{init: {'theme': 'default'}}%%
+bar
+  title Problems per Topic (counts)
+  "Arrays": 15
+  "Trees": 10
+  "DP": 8
+```
+
+Note: This section is maintained automatically by .github/workflows/update-readme.yml using scripts/update_stats.js — do not edit manually.
+<!-- STATS_END -->
+
 ## 🗂️ Directory Structure
 ```
 DSA problems/
