@@ -45,24 +45,22 @@ class ProblemTracker:
     def update_readme(self):
         readme_template = self.get_readme_template()
         
-        # Update topic table
-        topic_rows = []
-        for topic, info in self.data['topics'].items():
-            mastery = '⭐' * (info['solved'] // 5 + 1)
-            topic_rows.append(f"| {topic} | {info['solved']} | {mastery} |")
+        # Update Mermaid chart data with proper syntax
+        mermaid_data = '\n    '.join([
+            f'"{difficulty}" : {count}'
+            for difficulty, count in self.data['difficulty_count'].items()
+        ])
         
-        # Update mermaid chart data
-        mermaid_data = [
-            f'"Easy" : {self.data["difficulty_count"]["Easy"]}',
-            f'"Medium" : {self.data["difficulty_count"]["Medium"]}',
-            f'"Hard" : {self.data["difficulty_count"]["Hard"]}'
-        ]
+        # Create topic progress data
+        topic_progress = '\n    '.join([
+            f'{topic}["{topic}"] --> {topic}Count["{info["solved"]} Problems"]'
+            for topic, info in self.data['topics'].items()
+        ])
 
-        # Create the final README content
         readme_content = readme_template.replace(
-            '{{TOPIC_ROWS}}', '\n'.join(topic_rows)
+            '{{MERMAID_PIE_DATA}}', mermaid_data
         ).replace(
-            '{{MERMAID_DATA}}', ',\n    '.join(mermaid_data)
+            '{{MERMAID_TOPIC_DATA}}', topic_progress
         )
 
         with open('README.md', 'w') as f:
@@ -70,24 +68,27 @@ class ProblemTracker:
 
     def get_readme_template(self):
         return '''# Data Structures and Algorithms Practice
-
-## 📚 Problem Categories
-...your existing categories...
-
+        
 ## 🎯 Progress Tracking
 
 ```mermaid
-pie title Problem Solving Progress
-    {{MERMAID_DATA}}
+%%{init: {'theme':'default'}}%%
+pie showData
+    title Problems by Difficulty
+    {{MERMAID_PIE_DATA}}
 ```
 
-## 📊 Topic Coverage
+## 📈 Topic-wise Progress
 
-| Topic | Problems Solved | Mastery Level |
-|-------|----------------|---------------|
-{{TOPIC_ROWS}}
+```mermaid
+%%{init: {'theme':'default'}}%%
+graph LR
+    subgraph Progress
+    {{MERMAID_TOPIC_DATA}}
+    end
+```
 
-...rest of your README content...
+<!-- Rest of the template -->
 '''
 
 # Usage example
