@@ -45,24 +45,26 @@ pie title Problem Solving Progress
 
 | Topic | Problems Solved | Mastery Level |
 |-------|----------------|---------------|
-| Arrays | 15 | ⭐⭐⭐ |
-| Trees | 10 | ⭐⭐ |
-| DP | 8 | ⭐⭐⭐⭐ |
+| Arrays | 0 | ⭐⭐⭐ |
+| Trees | 0 | ⭐⭐ |
+| DP | 0 | ⭐⭐⭐⭐ |
 <!-- Add more topics -->
 
 <!-- STATS_START -->
 ### 📊 Live Topic Growth Chart (auto-updated on push)
 
 Current counts (problems solved)
-- Arrays: 15
-- Trees: 10
-- DP: 8
+- Arrays: 0
+- Trees: 0
+- DP: 0
+- LinkedList: 0
 
 ASCII bar chart (1 block = 1 problem)
 ```
-Arrays | 15 ███████████████
-Trees  | 10 ██████████
-DP     | 8  ████████
+Arrays | 0 
+Trees  | 0 
+DP     | 0 
+LinkedList | 0 
 ```
 
 Rendered SVG chart (auto-generated)
